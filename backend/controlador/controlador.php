@@ -21,10 +21,10 @@ switch ($request){
 
 function agregartarea(){
     $nombre = $_POST['nombre'];
-    $estado = $_POST['estado'];
     $fecha = $_POST['fecha'];
     $hora = $_POST['hora'];
-    $result = (new tareas())->agregartarea($nombre, $estado, $fecha, $hora);
+    $estado = $_POST['estado'];
+    $result = (new tareas())->agregartareaModelo($nombre, $fecha, $hora, $estado);
     echo json_encode($result);
 }
 
@@ -41,12 +41,11 @@ function eliminartarea(){
 }
 
 function modificartarea(){
-    $id = $_POST['id'];
     $nombre = $_POST['nombre'];
-    $estado = $_POST['estado'];
     $fecha = $_POST['fecha'];
     $hora = $_POST['hora'];
-    $resultado = (new tareas())->modificartarea($id, $nombre, $estado, $fecha, $hora);
+    $estado = $_POST['estado'];
+    $resultado = (new tareas())->modificartarea($nombre,$fecha, $hora, $estado);
     echo json_encode($resultado);
 }
 

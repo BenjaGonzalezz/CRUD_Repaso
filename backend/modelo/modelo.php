@@ -8,13 +8,13 @@ class tareas{
         $connection = conection();
         $sql = "SELECT * FROM tareas";
         $respuesta = $connection->query($sql);
-        $imagenes = $respuesta->fetch_all(MYSQLI_ASSOC);
-        return $imagenes;
+        $tareas = $respuesta->fetch_all(MYSQLI_ASSOC);
+        return $tareas;
     }
 
-    function agregartarea($nombre, $estado, $fecha, $hora){
+    function agregartareaModelo($nombre, $fecha, $hora, $estado){
         $connection = conection();
-        $sql = "INSERT INTO tareas(nombre, estado, fecha, hora) VALUES('$nombre', '$estado','$fecha', '$hora');";
+        $sql = "INSERT INTO tareas(nombre, fecha, hora, estado) VALUES('$nombre','$fecha', '$hora', '$estado');";
         $connection->query($sql);
     }
     function eliminartarea($id){
@@ -24,8 +24,8 @@ class tareas{
         return $respuesta;
     }
     
-    public function modificartarea($id, $nombre, $estado, $fecha, $hora){
-        $sql = "UPDATE tareas SET nombre='$nombre', estado='$estado', fecha='$fecha', hora='$hora', WHERE (id ='$id');";
+    public function modificartarea($nombre, $estado, $fecha, $hora){
+        $sql = "UPDATE tareas SET nombre='$nombre', fecha='$fecha', hora='$hora', estado='$estado'";
         $connection = conection();
         $respuesta = $connection->query($sql);
         return $respuesta;
